@@ -4,6 +4,7 @@ import {
   BarChart, Bar, AreaChart, Area, XAxis, YAxis, Tooltip,
   ResponsiveContainer, CartesianGrid,
 } from "recharts";
+import confetti from "canvas-confetti";
 import {
   LayoutDashboard, CreditCard, ArrowLeftRight, Wallet, User, ShieldCheck,
   LogOut, Bell, Search, Eye, EyeOff, ArrowDownLeft, CheckCircle2, XCircle,
@@ -1053,6 +1054,16 @@ function DepositPage({ activeAccount, onRefresh }: { activeAccount: any; onRefre
   const [error, setError] = useState("");
   const lastAmount = amount;
 
+  useEffect(() => {
+    if (success && tab === "deposit") {
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+  }, [success]);
+
   const handleTransaction = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!activeAccount) return;
@@ -1193,6 +1204,16 @@ function TransferPage({ activeAccount, onRefresh }: { activeAccount: any; onRefr
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (success) {
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 }
+      });
+    }
+  }, [success]);
 
   const handleTransfer = async (e: React.FormEvent) => {
     e.preventDefault();
