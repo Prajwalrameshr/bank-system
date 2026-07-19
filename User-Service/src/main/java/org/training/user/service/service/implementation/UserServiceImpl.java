@@ -121,7 +121,11 @@ public class UserServiceImpl implements UserService {
             UserDto userDto = userMapper.convertToDto(user);
             UserRepresentation userRepresentation = userRepresentationMap.get(user.getAuthId());
             userDto.setUserId(user.getUserId());
-            userDto.setEmailId(userRepresentation.getEmail());
+            if (userRepresentation != null) {
+                userDto.setEmailId(userRepresentation.getEmail());
+            } else {
+                userDto.setEmailId(user.getEmailId());
+            }
             userDto.setIdentificationNumber(user.getIdentificationNumber());
             return userDto;
         }).collect(Collectors.toList());
