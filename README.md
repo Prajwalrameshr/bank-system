@@ -134,16 +134,7 @@ The React application features a floating developer toggle in the bottom-right c
 -   **Mock Mode (Default / Offline)**: Replicates the backend state using browser storage (`localStorage`) so developers can test all banking operations instantly without running Keycloak, MySQL, or Java microservices.
 -   **Real API Mode**: Redirects REST operations through port `8080` (API Gateway) to execute actual Spring Boot controller logic.
 
-```bash
-# Navigate to the frontend directory
-cd frontend
 
-# Install package dependencies
-npm install
-
-# Run the dev server
-npm run dev
-```
 Open **`http://localhost:5173`** in your browser.
 
 ---
